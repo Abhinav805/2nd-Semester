@@ -1,0 +1,5 @@
+alert tcp 192.168.122.1 any -> 192.168.122.183 22 (msg:"Alert of SSH access from jetstream host"; sid:2;)
+alert tcp 192.168.122.1 any -> 192.168.122.183 80 (content:"HTTP"; msg:"Alert of Web server HTTP access from jetstream host"; sid:3;)
+alert tcp 192.168.122.183 any <> 157.240.18.35 443 (content:"facebook"; msg:"Connecting  to facebook via HTTPS connection"; sid:4;)
+alert tcp 192.168.122.183 any <> 157.240.18.35 80 (content:"facebook"; msg:"Connecting to facebook via HTTP connection"; sid:5;)
+alert tcp 192.168.122.188 any -> 192.168.122.183 [1000:1010] (flags:S; msg:"Client is scaning the open the ports on the server"; sid:6;)

@@ -1,0 +1,22 @@
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            
+DROP       tcp  --  192.168.122.1        anywhere             tcp dpt:http
+ACCEPT     tcp  --  192.168.122.188      anywhere             tcp dpt:http
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            
+ACCEPT     tcp  --  anywhere             129.79.78.234        tcp dpt:http
+ACCEPT     tcp  --  anywhere             129.79.78.234        tcp dpt:https
+ACCEPT     tcp  --  anywhere             129.79.78.235        tcp dpt:https
+ACCEPT     tcp  --  anywhere             129.79.78.235        tcp dpt:http
+DROP       tcp  --  anywhere             anywhere             tcp dpt:https
+DROP       tcp  --  anywhere             anywhere             tcp dpt:http

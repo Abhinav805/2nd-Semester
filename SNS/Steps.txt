@@ -1,0 +1,124 @@
+SNS
+
+There are 4 places:
+
+1)Laptop since there was no 
+
+keygen 
+2)Host
+3)Server
+4)Client
+
+Step 1 :
+Laptop 
+
+To check if this folder exists or not
+$ cd ~/.ssh
+
+If not then create the using key 
+$ ssh-keygen
+
+If the key is already there then it will ask
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/Abhinav Kumar/.ssh/id_rsa):
+/c/Users/Abhinav Kumar/.ssh/id_rsa already exists.
+Overwrite (y/n)? n
+
+
+If you will say y then it will override the old key else it will not generate the 
+
+
+The key will generate two keys one public key and another is the private key
+
+
+While creating the key generation it will ask for setting up the password. We kept empty otherwise it will keep asking for the password 
+even for simple cmd commands 
+
+To connect with the VM
+type ssn username@severhost
+UserName is the remote server computer you are tryting to connect to and not the local computer 
+
+We always provide the public key to the remote server 
+ssh-copy-id root@ip address
+
+The sever has your public key 
+
+Now we can connect to the server using username@severhost and this time it will connect to the server directory and will ask for the 
+password only if we have given any password while creating ssn key
+
+
+To copy the file from the local to the server 
+
+scp short for secure copy 
+
+Step 1 : Go to the folder in local computer where the file is present
+index.html
+Step 2 : 
+
+scp index.html username@severhost:/file path
+ this file path can be provided like 
+ 
+
+
+pwd - present working directory
+
+vi authorized_keys to open the file
+
+escape+ :q! quit file without saving changes
+escape+ :wq save
+
+cat or echo to see
+
+
+______________________________________________________________________________________________________
+
+1) On your local machine, start ssh agent
+
+                                eval $(ssh-agent -s)
+
+2) Add your private key into ssh agent list
+
+                             ssh-add ~/.ssh/yourPrivateKeyName
+
+3) Use forward agent to ssh into your host
+
+                             ssh -o ForwardAgent=yes yourUserName@YourIpAddress
+
+4) ssh into your client or server VM
+
+                                ssh sadmin@192.168.122.183
+
+                                                or
+
+                                ssh cadmin@192.168.122.188
+								
+								
+jupyter nbconvert --to html --TemplateExporter.exclude_input=True --no-prompt lab02_notebook_Kumar_Abhinav.ipynb
+
+
+
+sudo apt install resolvconf
+sudo vim /etc/resolvconf/resolv.conf.d/base
+I 
+name.. 8.8.8.8
+(Now save) :wq
+
+Now run the command
+sudo resolvconf -u
+
+Ct X and n to exit without saving
+
+ Rechecsudo nano /etc/resolv.conf -- To check the resolv file where it got saved or not 
+ s3cur3n3tworks#!@hac
+ 
+ s3cur3n3tworks#!@hac
+ 
+ 1powerS3rv3rs
+ 
+ https://askubuntu.com/questions/170216/sudo-doesnt-work
+ 
+ pkexec visudo  -- Just again open to check it and to make any edit
+ 
+ Alt + u
+ 

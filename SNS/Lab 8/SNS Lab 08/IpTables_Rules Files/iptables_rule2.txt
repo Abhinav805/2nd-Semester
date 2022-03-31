@@ -1,0 +1,28 @@
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
+ACCEPT     udp  --  anywhere             anywhere             udp spt:domain
+DROP       udp  --  anywhere             anywhere            

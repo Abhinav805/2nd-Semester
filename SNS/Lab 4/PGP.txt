@@ -1,0 +1,64 @@
+We will use Seahorse to generate OpenPGP key
+
+https://www.lifewire.com/guide-to-seahorse-tool-2196541
+
+Open terminal-> seahorse (Enter)
+
+Passwords and Keys
+
+Click on +
+
+1)Select PGP Key from the list and press Continue.
+
+2)Enter your full name in the Full Name field.
+
+3)Optionally, add your email address and a comment to describe the key.
+
+4)Press Create.
+
+5)In the password dialog, enter a password for the key. Retype the password to confirm your choice.
+
+6)Press OK to finish.
+
+You will get a key. Which you can copy to to Account Editor
+
+Follow this path to 
+Mail Accounts -> abkuma@iu -> Edit -> Security -> Now paste the key in OpenPGP Key ID tab : 3BB2344.....(Your key to be copied)
+
+
+
+https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/
+
+	
+How to generate .asc  key for your email id(or your friends email)
+
+gpg --export --armor --output <key_name.asc> <email_id>
+gpg --export --armor --output abkuma_pgp.asc abkuma@iu.edu
+
+
+
+
+Get the asc key from your friend.
+Download it
+
+Go to the download folder
+
+1)First import the friends key
+
+gpg --import sugunda.asc
+
+It will say impoted
+
+2)Second check the list of keys. It shows all the keys with respective emailId and Key
+
+gpg --list-keys
+
+3)Now sign this key of your friend
+
+gpg --sign-key <KEYS COPY from the list>
+
+
+It will ask do u want to sign this key with your key?
+Press y and enter
+
+DONE

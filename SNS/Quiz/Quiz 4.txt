@@ -1,0 +1,35 @@
+SNS
+1.
+
+Yes, I agree with Jesse.  The correct format is {Message}Sessionkey {Sessionkey}Recipient’s Publickey is the correct format. which is given here. So the main cause of this being the correct format because the message is first secured first secured with the session key and then the the session key id encrypted using the session key with the recipient's public key. 
+The reason to do so is that once the message is received by Bob, Bob can decrypt the key using the private key and then use his key to decrypt the message which is received by the Bob.
+
+
+
+2.Do protocols like TLS always ensure secure transmission of a message?
+
+So the TLS which is Transport Layer Security  is one of the widely used security protocols. It 
+provide you with integrity and confidentiality of the message during its transport, provided that it was used correctly.
+It protects critical data that are transmitted online. It’s most prominently used to secure the data that travels between a web browser and website via HTTPS, 
+but it can also be used to secure email and a host of other protocols.
+It has Confidentiality under  which the Handshake Protocol specifies a shared secret key for symmetric SSL payload encryption.
+Also it has Message integrity under which A shared secret key is also defined in the Handshake Protocol, which is used to create a message authentication code (MAC).
+On the other hand it is has few vulnerability like Handshake Protocol attacks, attacks on record and application data protocols etc.
+Overall we can say that TLS in most of the cases ensure a secure transmission of a message.
+
+
+
+
+
+3. The textbook depiction of phase 2 is based on the assumption that we employ the use of Diffie Hellman or a secure algorithm. 
+If we use an RSA-based encryption technique, we'll need to share certificates and private key information between the server and the client.
+Now the client shares the certificates in phase 3, then prevention of key exchange in phase 2 restricts the use of Diffie Hellman or other pre-shared secret algorithms.
+
+	
+4. Explain what happened to the session and related connections when a TLS connection receives a fatal Alert message.
+
+In an alert protocol, A fatal alert message is represented by byte number 1, when it is set to fatal, which means that the alert is severe or critical. 
+The second byte represents the specific alert. In such a case (fatal alert), the TLS immediately closes that particular connection.
+Meanwhile the other connections which is running on that particular session may continue, but no new connections cannot are not established. 
+Fox example an incorrect MAC is a fatal alert . Since this issue is fatal, all the other connections on that particular session can continue,
+ but the  new connections on that session are not established during this time.

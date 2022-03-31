@@ -1,0 +1,94 @@
+1) List three requirement for achieving data integrity. Describe a mechanism or process for achieving each
+
+
+The 1st part is Completeness.Under completeness a data record, such as a description of an IT asset, should be  complete to satisfy the needs of all its consumers. 
+For example in  IT Operations cares whether the asset is active, as well as its location, while Finance wants to manage attribution of software licenses. 
+Gaps in the attribute data can impair an organization’s ability to manage the asset. For this Open Data Procedures can used under which 
+everyone has takes the responsiblity to follow strict guidelines on how to use the data which is available.
+
+
+The second part is accuracy. Wrong or misleading data helps no one. The cause of inaccuracy can be due to manual input errors, 
+or mishandled conflicting data between sources, 
+as well as from ineffective IT discovery tools that miss or double-count an asset. This can be done by normalization or any validation procedures.
+
+
+Third part is the Consistency.This is one of the harder data integrity issues to resolve. If you only have a single source of data, 
+then it is likely to be consistent (although potentially consistently wrong). To truly verify the data, , 
+it must be validated against multiple sources. 
+Deciding which source is the most accurate is complicated and establishing automated precedence rules can be challenging without the right tool. 
+Here we can use the privacy enhancing tools to to acheive this. 
+
+
+
+
+
+2) Explain why encrypting a message does not ensure data integrity
+
+https://stackoverflow.com/questions/3655516/does-encryption-guarantee-integrity
+
+Yeah encrypting a message does not ensure data integrity. For example while doing encryption we may want to 
+add some digital signature. Interestingly, when using public key cryptography, it is not sufficient to sign then encrypt (SE), 
+or to encrypt then sign.  (ES). Both of these are vulnerable to replay attacks. 
+You have to either sign-encrypt-sign or encrypt-sign-encrypt to have a generally secure solution.
+If you use SE, the recipient can decrypt the message, then re-encrypt it to a different recipient. 
+This then deceives the new recipient about the sender's intended recipient.
+If you use ES, an eavesdropper can remove the signature and add their own. 
+Thus, even though they can't read the message, they can take credit for it, pretending to be the original sender.
+
+So we can see that the integrity of that data is not met.Thus encryting a message does not ensure the data integrity.
+
+
+3)List and describe two encryption-based approaches for ensuring data integrity. Explain how the message's origin is 
+authenticated for both approaches.
+
+One can ensure data integrity by adding Message Authentication Code(MAC) to the encryption. The representation can be 
+MAC(m) = f{key(AB),m}
+Where 
+m = message
+f- function to encrypt the message
+Key(AB) - private key shared between A and B
+Hence, the message m has been applied the function f to create message authentication code MAC
+This MAC, along with the message m has been transferred to the receiver and at the receiver end B, it computes the MAC using the same function on message m and compares the two MAC’s generated for verification.
+
+The techniques to create this MAC are:
+1. Using Data Encryption Standard to not just encrypt and send but to use Cipher Block chaining and encrypting the message and then using the last n bits of the cipher text as MAC. Hence reordering of block issue is prevented because of relationship between each blocks. Hence this is similar to encryption but the authentication algorithm need not be reversible. At each block during decryption the last n bits is used as an input and decrypted using key shared to generate that part of the message. At each decryption the input is fed to output of next block to generate the message. At the end the two messages are compared to verify the source of the message.
+2. Using Asymmetric cryptography such as one way hash function to create a message digest. It can be represented as H(m) = h, where H is hash function applied on message m creating an output h. Here h is the fixed number of bits produced after applying Hash function H on message m. It is infeasible or almost impossible to determine message m from h and hence is used to verify if message has been altered with or not. It is used to create digital signatures which verifies messages origin that is sender signs the message hash with its private key creating digital signature and and sends it to the receiver and at the receiver end it applies the hash function the message along with senders public key and then compares the hash generated with the senders hash to verify the signature and the message source.
+
+
+The first approach is the symmetric encryption.Symmetric encryption is a widely used data encryption technique whereby data is encrypted and decrypted using a single, 
+secret cryptographic key.It works by using either a stream cipher or block cipher to encrypt and decrypt data. A stream cipher converts 
+plaintext into ciphertext one byte at a time, and a block cipher converts entire units, or blocks, of plaintext using a predetermined key length, 
+such as 128, 192, or 256 bits. So Senders and recipients using symmetric encryption to transfer data to each other must know the secret key to, in the case of senders, 
+encrypt the data they intend to share with recipients, and in the case of recipients, decrypt and read the encrypted data the senders
+share with them, as well as encrypt any necessary responses. Symmetric-key encryption also provides a degree of authentication, since information encrypted with one symmetric key cannot be decrypted with any other symmetric key. When the symmetric key is kept secret by the two parties using it to 
+encrypt communications, each party is sure that it is communicating with the other.
+
+The second way is the asymmetric which is also known as public-key cryptography or public-key encryption, uses mathematically linked public- 
+and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data. Asymmetric encryption also enabled the concept of digital signatures. If, instead of using a private key for encryption it is instead used for message authentication, one can sign a message. 
+To sign a message one first hashes  a message and then encrypts the hash.
+
+
+4) Weak and strong collision resistance
+The weak collision resistance property is sometimes also referred to as second preimage resistance likely
+an x there exists no x' with x' != x so that h(x) = h(x').
+
+Under Strong collision resistance there exist no x and x' with x != x' so that h(x) = h(x')
+the obvious difference in their definitions is that for weak collision resistance we assume to be bound to a particular choice of x, 
+whereas in the definition of strong collision resistance we are free to arbitrarily choose our x and x'. 
+A simple example of the weak collision resistance is simple password storage scheme.Assume we store user-provided passwords in a database by storing their hash. Authentication would succeed when the hash of some password 
+a user provides is equal to the value that was stored previously (this is an inherently insecure scheme though, but please bear with me 
+for the moment). Now in that case, the given x is the (unknown) original password that was provided earlier. If an attacker were capable of solving the "second preimage" problem efficiently, he could obtain an x' whose hash value 
+is the same as that of the original x, and would thus be authenticated successfully. 
+
+Strong collision resistance means that is difficult to find any two messages that hash to the same value. For example
+Under strong collision an application is there where you want to be able to look up arbitrary data stored in a database with the help of unique ids.
+Instead of issuing queries on the original data (which would often be very slow due to the potentially unbounded size of the data),
+you would compute hashes of the data instead.Hashes are very compact, limited in their size and can thus be queried much more efficiently.
+But we want to avoid two distinct data sets to hash to the same value, which is essentially a collision.
+
+
+5)No I dont agree with my friend Jerry since the attacker was able to create the Message M that generate the same hashcode as given 
+by the message M. which voliates the weak collision resistance so it is an example of weak collision. I also deny the fact that 
+Bob made as well since it he would not be able to create digitally sign M since he does not private keys. Only if the attacker
+has access to the Alice private keys the attacker would not be able to send message to Bob. But the attacker was able to computer 
+message without modifying. So it is not possible.
