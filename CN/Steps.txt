@@ -1,0 +1,196 @@
+COMPUTER NETWORKS
+
+
+$ git fetch upstream
+$ git merge upstream/master master
+$ cd src
+$ make part1
+
+https://github.com/yy/dviz-course/wiki
+
+Client Program
+Server Program
+
+nes
+
+
+ter skeleton code src/
+Skeleton nester code src/netster.c
+
+Assignment Expectations
+
+interface expectations
+behavior expectations
+./netster [-h] [-p PORT] [-i IFACE] [-f FILE] [-u] [-r RUDP] [<host>]
+
+TCP example
+
+To do the message transfer between the client and the server
+Server
+#<program> <port>
+./netster -p 8000
+
+Client
+#<program> <port>   <host>
+./netster -p 8000 192.168.1.2
+
+
+File mode
+
+--file - transfer a file from the client to the server
+--file x - create (or overwrite) the file named x in the server’s current working directory.
+--file abc.txt read the file named abc.txt
+
+specify a relative or absolute path
+
+--file /usr/bin/example.sh
+--file C:\Documents\example.doc
+--file ../../src/foo/bar.baz
+
+The server must be running in the client starts
+
+File uses the reliable UDP (RUDP) for transfer with --rudp N
+
+--rudp 0 
+uses UDP with no extra reliability features
+
+--rudp means --rudp 0
+
+Server
+
+program port download_filename
+./netster -p 8000 --file foo.txt
+
+Client
+
+program port upload_filename 
+./netster -p 8000 --file bar.txt 192.168.1.2
+
+
+Rudp 1
+./netster -p 8000 --rudp 1 --file foo.txt
+./netster -p 8000 --rudp 1 --file bar.txt 192.168.1.2
+
+
+Rudp 2
+
+(Download Server)
+.netster -p 8000 --rudp 2 --file bar.txt 
+
+.netster -p 8000 --rudp 2 --file bar.txt 192.168.1.2
+
+
+
+The -interface Flag
+
+always from left on (default)
+
+getaddrinfo or bind calls 
+
+0.0.0.0 interface
+
+Not all the host hava single interface 
+To limit the a server to just one of the interface among 
+
+nester in my laptop has wifi  10.0.10.5
+
+and an ethernet connection 192.168.1.2
+
+To connect with ethernet --interface 192.168.1.2
+
+
+___________________________________________________________________
+
+How to use netstat in Windows 10
+
+CMD as an administer
+
+netstat
+netstat -n
+netstat -n Interval
+netstat -n 5
+Cnt + C (Terminate)
+
+
+Proto : Shows the protocol (TCP or UDP)
+Local Address 
+Foreign Address
+State : Established , Time_wait, Syn_Sent
+
+netstat -a displays all the active and inactive connections
+
+
+
+___________________________________________________________________________________________
+
+How to test the tcp and udp 
+
+TCP
+
+./a.out -p 8080 					- Server
+./a.out -p 8080 127.0.0.1 			- Client
+
+
+UPD
+
+./a.out -p 8080 --udp				-Server
+./a.out -p 8080 --udp 127.0.0.1		-Client
+
+
+______________________________________________________________________________________________
+
+ncat -4 -t localhost 7777
+
+netstat -tto checjk  what all the post are opem
+
+watch -n -d
+
+tcpdump -i to port 7777
+
+-p to override
+
+
+acsii 
+
+C to terminate the conenction 
+
+ncat -4 -u -p 
+
+curl localhost: 
+ncat -t -4 -l localhost 7777
+
+helpmail
+
+hellp mail
+
+help meial
+
+
+13,851.03
+
+13852
+
+
+_________________________________________________________________________________________________________________________________
+
+The fread() function reads up to count items of size length from the input stream and stores them in the given buffer. The position in the file increases by the number of bytes read.
+
+
+What’s difference between header files “stdio.h” and “stdlib.h” ?
+
+<stdio.h>” is header file for Standard Input Output, “<stdlib.h>” is header file for Standard Library
+ “<stdio.h>” contains declaration of printf() and scanf() while “<stdlib.h>” contains declaration of malloc() and free()
+  “<stdio.h>” contains header information for ‘File related Input/Output’ functions, “<stdlib.h>” 
+  contains header information for ‘Memory Allocation/Freeing’ functions
+  
+  size_t vs int
+  The result of sizeof() is of unsigned integral type which is usually denoted by size_t. This operator can be applied to any data-type, including primitive types such as integer and floating-point types, pointer types, or 
+  compound datatypes such as structure, union etc.
+  
+  
+  https://www.geeksforgeeks.org/memcpy-in-cc/
+  
+  memcyp(to , from , size)
+  
+  In practice, char is usually 8 bits in size and short is usually 16 bits in size (as are their unsigned counterparts).
+

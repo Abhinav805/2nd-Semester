@@ -1,0 +1,185 @@
+1.What is a host? Are there more hosts on the internet or non-host network nodes?
+How do you know?
+
+A host (also known as "network host") is a computer or other device that communicates with other hosts on a network.
+Hosts on a network include clients and servers -- that send or receive data, services or applications.
+
+A node is also a broader term that includes anything connected to a network, while a host requires an IP address
+
+
+2. What is a protocol?
+A protocol is a standard set of rules that allow electronic devices to communicate with each other.
+Example TCP (Transmission Control Protocol), UDP (User Diagram Protocol)
+IP (Internet Protocol), HTTP (Hyper Text Transfer Protocol),
+SMTP(Simple Mail Transfer Protocol), FTP (File Transfer Protocol)
+
+
+3. Bandwidth – what does it define, why is it something of a misnomer?
+The maximum amount of data transmitted over an internet connection in a given amount of time.
+
+Misnomer : Bandwidth is often mistaken 
+for internet speed when it's actually the volume of information that can be sent over a connection in a 
+measured amount of time – calculated in megabits per second (Mbps)
+
+4. Compare and contrast a statistical multiplexed (packet switched) vs. a statically
+multiplexed network. How are they different? What are the advantages and
+What are two classes of static multiplexing?
+
+
+Packet Switching transmits data across digital networks by breaking it down into blocks or packets for more efficient 
+transfer using various network devices. Each time one device sends a file to another, it breaks the file down into packets 
+so that it can determine the most efficient route for sending the data across the network at that time.
+ The network devices can then route the packets to the destination where the receiving device reassembles them for use. 
+ 
+Frequency Division Multiplexing (FDM)
+Time-Division Multiplexing (TDM)
+
+5.How long does it take a packet of length 1000 bytes to propagate over a link
+distance of 2500 km, propagation speed (s) of 2.5x10ˆ8m/s, and transmission rate
+of 2mbps?
+
+d = v * t
+
+T = d/v
+
+= 2500 * 10^3/ 2.5* 10^8*2
+
+ 
+
+6.What is an ISP? What different types of ISPs exist?
+
+
+An Internet Service Provider (ISP) is the industry term for the company that is able to provide you with access to the Internet, typically from a computer. 
+If you hear someone talking about the Internet and they mention their “provider,” they're usually talking about their ISP
+
+AT&T, Verizon, Comcast, or Spectrum
+
+7.What are Internet Exchange Points (IXPs) and Points of Presences (PoPs)?
+
+An Internet exchange point (IXP) is a physical location through which Internet infrastructure companies such as 
+Internet Service Providers (ISPs) and CDNs connect with each other.
+
+A point of presence (PoP) is a demarcation point, access point, or physical location at which two or 
+more networks or communication devices share a connection.
+
+Q.8How does the Traceroute command work?
+
+nslookup google.com
+
+dig @b.root-servers.net edu q-A
+
+dig @a.edu-servers.net www.indiana.edu q-A
+
+
+Q9.What are two advantages of having a layered network? What about two
+disadvantages? What are the layers in the Internet model? In the OSI 7 layer
+model?
+
+It assists in protocol design.
+It speeds up packet delivery.
+It prevents designers from creating their own model.
+It prevents technology in one layer from affecting other layers.
+It ensures a device at one layer can function at the next higher layer.
+
+OSI Model
+Physical Layer - Like Cables, Network Interface cards
+Data Link Layer - Physical Address is added MAC Address, Switches
+Network Layer - Here source and destination IP Address is added , IP Address, Routers
+Transport Layer - Here we add the transport protocols such as TCP and UDP. Also adds source and desitination port number
+Session Layer - To Stablish and terminating devices 
+Presentation Layer- It formats the data in the way the receiving application can understand it. Also it can encypt and decrypt data if needed
+Application Layer - This is where User and Application communicate. Application communicate protocols like SMTP, FTP, 
+
+All 
+People
+Seem
+To 
+Need
+Data
+Processing
+
+Disadvantages
+It is purely a theoretical model that does not consider the availability of appropriate technology. This restricts its practical implementation.
+The standards of OSI model are theoretical and do not offer adequate solutions for practical network implementation.
+After being launched, the OSI model did not meet the practical needs as well as the TCP/IP model. So it was labeled as inferior quality.
+The OSI model is very complex. The initial implementation was cumbersome, slow and costly.
+
+
+
+Physical Layer
+Data Link Layer
+Network Layer
+Application Layer
+
+
+11)What are the advantages of a P2P model over a client server model?
+
+Advantages
+
+No need for a network administrator. Network is fast and inexpensive to setup and maintain.
+Each computer can make backup copies of its data to other computers for security.
+
+Disadvantages
+lacks the feature of centralization.
+Security
+
+
+What is a socket?
+Sockets allow communication between two different processes on the same or different machines.
+It's a way to talk to other computers using standard Unix file descriptors
+
+13. What does TCP provide that UDP does not? Which is more impactful on the
+network?
+
+
+UDP does not provide the connection like the TCP
+
+TCP is considered more reliable than its UDP counterpart. 
+This is because TCP performs error correction that reduces a chance that a connection will drop out.
+
+
+14. In general, what does an HTTP message between 200 and 299 mean?
+
+200 means OK
+299 means success
+
+the request has been accepted, a new request has been created, or a certain problem was solved.
+
+
+15. What are the advantages and disadvantages of persistent vs. non-persistent
+HTTP? Which would I want to use for a large, one-time file transfer?
+
+The non-persistent connection has connection type 1.0, while the persistent connection has connection type 1.1.
+The non-persistent connection takes the connection time of 2RTT + file transmission time.
+It takes the first RTT (round-trip time) to establish the connection between the server and the client.
+
+A persistent connection takes 2 RTT for the connection and then transfers as many objects, as wanted, over this single connection.
+
+Persistance
+
+16. What is the difference between IMAP and POP?
+
+MAP is better if you are going to be accessing your email from multiple devices, such as a work computer and a smart phone. POP3 works better if you are only using one device, but have a very large number of emails. 
+It is also better if you have a poor internet connection and need to access your emails offline
+
+17.What roles may a Super Node play in a P2P network?
+In peer-to-peer networking, a supernode is any node that also serves as one of that network's relayers and proxy servers, handling data flow and connections for other users. 
+This semi-distributed architecture allows data to be decentralized without requiring excessive overhead at every node.
+
+18.Give a high level overview of the operation of SMTP from client and server
+perspectives.
+
+19.Give a high level overview of how DNS works. Make sure to include the concept of
+a Root and TLD domain server. Why do root servers exist?
+
+
+20.Explain, at a high level, the code flow in C or Python of a socket connection and
+sending/receiving data. What types of sockets can be created and used?
+
+
+
+
+
+
+
+
